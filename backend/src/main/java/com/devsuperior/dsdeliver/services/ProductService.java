@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepository repository;
 
     @Transactional(readOnly = true)
     public List<ProductDTO> findAll() {
-        List<Product> list = productRepository.findAllByOrderByNameAsc();
+        List<Product> list = repository.findAllByOrderByNameAsc();
         return list.stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 
